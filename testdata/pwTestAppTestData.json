@@ -1,0 +1,38 @@
+{
+  "using_the_grid": {
+    "email": "test@test.com",
+    "password": "password123@",
+    "optionIndex": 0
+  },
+  "navigation_page": {
+    "colors": {
+      "Light": "rgb(255, 255, 255)",
+      "Dark": "rgb(34, 43, 69)",
+      "Cosmic": "rgb(50, 50, 89)",
+      "Corporate": "rgb(255, 255, 255)"
+    },
+    "allModes": ["Light", "Dark", "Cosmic", "Corporate"]
+  },
+  "smart_table_page": {
+    "user_to_delete": {
+      "email": "mdo@gmail.com"
+    },
+    "user_to_edit_1": {
+      "email": "twitter@outlook.com",
+      "age": "35"
+    },
+    "user_to_edit_2": {
+      "id": "11",
+      "email": "test@test.com",
+      "age": "35"
+    }
+  },
+  "toastr_page": {
+    "primary": {
+      "status": "primary",
+      "icon": "email",
+      "titleAndSubtitle": "Toast 2. HI there!",
+      "message": "I'm cool toaster!"
+    }
+  }
+}
