@@ -230,5 +230,4 @@ test.describe(
 
 test.afterAll(async ({}) => {
   // clean up test environment if needed
-  console.log('Test run completed.')
 });
