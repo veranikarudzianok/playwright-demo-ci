@@ -18,6 +18,13 @@ export default defineConfig({
     ["list", { printSteps: true }],
     ["junit", { outputFile: "test-results/junitReport.xml" }],
     ["json", { outputFile: "test-results/jsonReport.json" }],
+    process.env.CI ? ["dot"] : ["list"],
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        uploadToArgos: !!process.env.CI
+      },
+    ],
   ],
 
   use: {
@@ -26,7 +33,7 @@ export default defineConfig({
     baseURL: "http://localhost:4200",
     trace: "on-first-retry",
     testIdAttribute: "data-test",
-    screenshot: "on",
+    screenshot: "only-on-failure",
     video: {
       mode: "on-first-retry",
       size: { width: 1280, height: 720 },
