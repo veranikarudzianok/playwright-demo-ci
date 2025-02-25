@@ -18,7 +18,7 @@ test(
     const imageTwo = "High Tatras 4";
 
     // open the website
-    await page.goto(testWebsite, { timeout: 20000 });
+    await page.goto(testWebsite, { timeout: 100000 });
 
     // switch to the frame
     const frame = page.frameLocator('[rel-title="Photo Manager"] iframe');
