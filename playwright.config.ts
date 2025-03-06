@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import * as os from 'os';
 
 require("dotenv").config();
 
@@ -24,6 +25,31 @@ export default defineConfig({
       {
         uploadToArgos: !!process.env.CI
       },
+    ],
+    ["line"], 
+    ["allure-playwright",
+      {
+        resultsDir: "allure-results",
+        detail: false,
+        suiteTitle: false,
+        environmentInfo: {
+          os_platform: os.platform(),
+        },
+        categories: [
+          {
+            name: "Ignored tests",
+            matchedStatuses: ["skipped"],
+          },
+          {
+            name: "Infrastructure problems",
+            messageRegex: /.*RuntimeException.*/,
+          },
+          {
+            name: "Browser context problems",
+            messageRegex: /.*Target page, context or browser has been closed.*/,
+          },
+        ],
+      }
     ],
   ],
 

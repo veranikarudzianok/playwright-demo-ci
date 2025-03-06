@@ -6,6 +6,9 @@ import {
   getPwTestAppTestData,
   randomizeElement,
 } from "../helpers/helpers";
+import * as allure from "allure-js-commons";
+import * as path from "path";
+import { ContentType } from "allure-js-commons";
 
 const pwTestAppTestData = getPwTestAppTestData();
 
@@ -133,6 +136,10 @@ test.describe(
     test("Trigger a tooltip @regression", async ({ pm }) => {
       await pm.navigateTo.tooltipPage();
       await pm.onTooltipPage.triggerAndValidateTopTooltip();
+      await allure.attachmentPath("Screenshot", path.resolve(__dirname, "..", "screenshots", "tooltipPage.png"), {
+        contentType: ContentType.PNG,
+        fileExtension: "png",
+    });
     });
   }
 );
