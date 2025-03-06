@@ -59,7 +59,7 @@ test.describe(
         const x = box.x + box.width / 2;
         const y = box.y + box.height / 2;
         await page.mouse.move(x, y); // put the mouse to the location you're starting from
-        await page.mouse.down(); // simulates clicking left key btm of the mouse
+        await page.mouse.down(); // simulate clicking left key btn of the mouse
         await page.mouse.move(x + 100, y); // move 100px to the right
         await page.mouse.move(x + 100, y + 100); // move 100px down
         await page.mouse.up(); // release
