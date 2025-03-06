@@ -111,7 +111,6 @@ test.describe(
     test("Set random color mode of the page @e2e", async ({ pm }) => {
       const allModes = pwTestAppTestData.navigation_page.allModes;
       const modeToSelect = await randomizeElement(allModes);
-      console.log(`Mode to select: ${modeToSelect}`);
       await pm.onTopNavigationPane.pageModeDropdown.click();
       await pm.onTopNavigationPane.checkRandomPageColorMode(
         colors,
@@ -230,11 +229,11 @@ test.describe(
     test("Select a certain date in the Date Picker", async ({ pm }) => {
       await pm.navigateTo.datePickerPage();
       await pm.onDatepickerPage.selectCommonDatePickerDateFromToday(255); // use any positive integer
-      await pm.onDatepickerPage.selectDatePickerWithRangeFromToday(20, 30); // use any positive integers, the first one must me lower
+      await pm.onDatepickerPage.selectDatePickerWithRangeFromToday(20, 30); // use any positive integers, the first one must be lower
     });
   }
 );
 
-test.afterAll(async ({}) => {
+test.afterAll(async () => {
   // clean up test environment if needed
 });

@@ -18,6 +18,7 @@ test.describe(
 		],
 	},
 	() => {
+
 		test.beforeEach(async ({ page }) => {
 			await page.goto(process.env.DEV);
 			await page.getByText('Button Triggering AJAX Request').click();
@@ -66,10 +67,11 @@ test.describe(
 
 		test('Auto waiting: wait for response @low', async ({ page }) => {
 			const successButton = page.locator('.bg-success');
-			await page.waitForResponse(
-				// solution line
-				(response) => new RegExp('http://uitestingplayground.com/ajaxdata').test(response.url()) && response.status() === 200
-			);
+			const responsePromise = page.waitForResponse(response =>
+				response.url() === 'http://uitestingplayground.com/ajaxdata' && response.status() === 200
+					&& response.request().method() === 'GET'
+			  );
+			await responsePromise;
 			const text2 = await successButton.allTextContents();
 			expect(text2).toContain('Data loaded with AJAX get request.');
 		});
