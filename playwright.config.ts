@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import * as os from 'os';
 
 require("dotenv").config();
 
@@ -24,6 +25,19 @@ export default defineConfig({
       {
         uploadToArgos: !!process.env.CI
       },
+    ],
+    ["line"], 
+    ["allure-playwright",
+      {
+        resultsDir: "allure-results",
+        detail: true,
+        suiteTitle: true,
+        environmentInfo: {
+          os_platform: os.platform(),
+          os_release: os.release(),
+          node_version: process.version,
+        },
+      }
     ],
   ],
 
