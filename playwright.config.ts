@@ -30,13 +30,25 @@ export default defineConfig({
     ["allure-playwright",
       {
         resultsDir: "allure-results",
-        detail: true,
-        suiteTitle: true,
+        detail: false,
+        suiteTitle: false,
         environmentInfo: {
           os_platform: os.platform(),
-          os_release: os.release(),
-          node_version: process.version,
         },
+        categories: [
+          {
+            name: "Ignored tests",
+            matchedStatuses: ["skipped"],
+          },
+          {
+            name: "Infrastructure problems",
+            messageRegex: /.*RuntimeException.*/,
+          },
+          {
+            name: "Browser context problems",
+            messageRegex: /.*Target page, context or browser has been closed.*/,
+          },
+        ],
       }
     ],
   ],
