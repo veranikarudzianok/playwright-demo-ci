@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 
-export class BasePage {
+export abstract class BasePage {
 	readonly page: Page;
 
 	constructor(page: Page) {
@@ -9,5 +9,9 @@ export class BasePage {
 
 	async waitForNumberOfSeconds(timeInSeconds: number) {
 		await this.page.waitForTimeout(timeInSeconds * 1000);
+	}
+
+	async getCurrentUrl(): Promise<string> {
+		return this.page.url();
 	}
 }
