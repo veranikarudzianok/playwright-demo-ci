@@ -28,42 +28,38 @@ export class SideNavigationPane extends BasePage {
 	}
 
 	async ioTDashboardPage() {
-		await this.ioTDashboardMenuItem.click();
+		await Promise.all([this.ioTDashboardMenuItem.click(), this.page.waitForURL(/.*iot-dashboard/)]);
 		await expect(this.page).toHaveURL(/.*iot-dashboard/);
 	}
 
 	async formLayoutsPage() {
 		await this.selectGroupMenuItem('Forms');
-		await this.formLayoutsMenuItem.click();
-		await this.waitForNumberOfSeconds(1);
+		await Promise.all([this.formLayoutsMenuItem.click(), this.page.waitForURL(/.*layouts/)]);
 		await expect(this.page).toHaveURL(/.*layouts/);
 	}
 
 	async toastrPage() {
 		await this.selectGroupMenuItem('Modal & Overlays');
-		await this.toastrMenuItem.click();
-		await this.waitForNumberOfSeconds(1);
+		await Promise.all([this.toastrMenuItem.click(), this.page.waitForURL(/.*toastr/)]);
 		await expect(this.page).toHaveURL(/.*toastr/);
 	}
 
 	async tooltipPage() {
 		await this.selectGroupMenuItem('Modal & Overlays');
-		await this.tooltipMenuItem.click();
-		await this.waitForNumberOfSeconds(1);
+
+		await Promise.all([this.tooltipMenuItem.click(), this.page.waitForURL(/.*tooltip/)]);
 		await expect(this.page).toHaveURL(/.*tooltip/);
 	}
 
 	async smartTablePage() {
 		await this.selectGroupMenuItem('Tables & Data');
-		await this.smartTableMenuItem.click();
-		await this.waitForNumberOfSeconds(1);
+		await Promise.all([this.smartTableMenuItem.click(), this.page.waitForURL(/.*smart-table/)]);
 		await expect(this.page).toHaveURL(/.*smart-table/);
 	}
 
 	async datePickerPage() {
 		await this.selectGroupMenuItem('Forms');
-		await this.datePickerMenuItem.click();
-		await this.waitForNumberOfSeconds(1);
+		await Promise.all([this.datePickerMenuItem.click(), this.page.waitForURL(/.*datepicker/)]);
 		await expect(this.page).toHaveURL(/.*datepicker/);
 	}
 }
